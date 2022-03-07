@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        console.log("Si funciona")
+        function Persona(nombre){
+            this.nombre = nombre;
+            // this.saludar = saludar;
+        } 
+
+        Persona.prototype.saludar = function(){
+            console.log("Holis")
+        }
+        
+        function Instsructor(nombre, apodo){
+            Persona.call(this, nombre) //Esto es lo que hace el super
+            this.apodo = apodo;
+        }
+        Instsructor.prototype = Object.create(Persona.prototype)
+        Instsructor.prototype.constructor = Persona
+        
+        var sandy = new Persona("Sandy")
+        var franco = new Instsructor("Franco", "Franquiño")
+        
+        class Animal {
+            constructor(nombre){
+                this.nombre = nombre
+            }
+            correr = function(){
+                 console.log("Estoy corriendo")
+             }
+        }
+        class Perro extends Animal {
+            constructor(nombre){
+             super(nombre)
+            }
+            ladrar = function(){
+                console.log("Guau!!")
+            }   
+        }
+
+        var mica = new Animal("Mica")
+        var penny = new Perro("Penny")
+    </script>
+</body>
+</html>
